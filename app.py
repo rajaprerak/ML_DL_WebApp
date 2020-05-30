@@ -13,10 +13,10 @@ app.logger.addHandler(logging.StreamHandler(sys.stdout))
 app.logger.setLevel(logging.ERROR)
 
 
-path  = os.path.join(os.getcwd(),"models","knn.pkl")
+path  = os.path.join(os.getcwd(),"models","iris_model.pkl")
 with open(path, 'rb') as f:
         iris_clf = pickle.load(f)
-path_model  = os.path.join(os.getcwd(),"models","test.h5")
+path_model  = os.path.join(os.getcwd(),"models","catdog_model.h5")
 catdog_clf = load_model(path_model)
 
 
