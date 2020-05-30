@@ -48,7 +48,7 @@ def predict(file):
     img = img_to_array(img)/255.0
     img = np.expand_dims(img, axis=0)
     probs = catdog_clf.predict(img)[0]
-    output = {'Cat:': probs[0], 'Dog': probs[1]}
+    output = {'Cat': probs[0], 'Dog': probs[1]}
     return output
 
 @app.route('/result_image_classify', methods=['POST'])
