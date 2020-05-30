@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<a href="/iris"><button class="btn btn-primary float-left">Back</button></a>
+
+<div class="container">
+  <div class="jumbotron" style="background-color:#1daeff !important;">
+
+    {% if prediction == 0 %}
+      <center><h2 style="color:#fff;">Iris is Setosa</h2></center> 
+    {% elif prediction == 1 %}
+      <center><h2 style="color:#fff;">Iris is Versicolor</h2></center> 
+    {% else %}
+      <center><h2 style="color:#fff;">Iris is Verginica</h2></center> 
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='css/styles.css')}}">
+{% endblock %}

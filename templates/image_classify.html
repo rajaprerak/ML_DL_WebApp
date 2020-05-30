@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block body %}
+<center><a href="/"><button class="btn btn-primary float-left">Home</button></a></center>
+
+<div class="container">
+    <center><h2 style="color:#1DAEFF;">Image Classifier</h2></center>      
+</div>
+<!-- <div class="file-upload-wrapper">
+    <form style="color: #757575;" action="{{ url_for('result_image_classify')}}" method="POST" enctype="multipart/form-data">
+        <input type="file" id="image" name="image" class="file-upload" />
+        <button class="btn btn-primary btn-xl js-scroll-trigger" type="submit">Predict</button>
+    </form>
+  </div>  -->
+
+  <form style="color: #757575;" action="{{ url_for('result_image_classify')}}" method="POST" enctype="multipart/form-data">
+
+  <link href="{{url_for('static', filename='css/image_classify.css')}}" rel="stylesheet">
+    <div class="frame">
+        <div class="center">
+            <div class="title">
+                <h1>Drop or upload image</h1>
+            </div>
+            <div class="dropzone">
+                <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
+                <input type="file" class="file-upload" id="image" name="image"/>
+            </div>
+            <button class="btn btn-primary btn-xl js-scroll-trigger" type="submit">Predict</button>
+
+            <!-- <button type="button" class="btn" name="uploadbutton">Upload file</button> -->
+
+        </div>
+    </div>
+</form>
+
+
+
+{% endblock %}
+

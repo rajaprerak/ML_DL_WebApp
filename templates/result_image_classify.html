@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<a href="/image_classify"><button class="btn btn-primary float-left">Back</button></a>
+
+<!-- <img width="224" height="224" src="{{imagesource}}" alt="Italian Trulli">
+<td> {{label}} </td> -->
+
+
+<div class="row">
+    <div class="col-lg-4">
+      <div class="page-header">
+        <h3 id="tables">Result</h3>
+      </div>
+      <div class="bs-component">
+        <table class="table table-hover">
+            <tr class="table-active">
+              <th scope="col">Image</th>
+              <th scope="col">Prediction</th>
+            </tr>
+            <tr>
+                <th scope="row"> <img width="400" height="400" src="{{imagesource}}" /> </th>
+                <td><h2> {{label}} </h2> </td>
+              </tr>
+        </table> 
+    </div>
+
+
+
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('.static', filename='css/styles.css')}}">
+{% endblock %}
