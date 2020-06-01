@@ -62,7 +62,14 @@ def result_image_classify():
         file_path = os.path.join('static/img/', filename)
         file.save(file_path)
         output = predict(file_path)
-        final_output = max(output, key= lambda x: output[x])
+        temp = 0
+        for v in output.values():
+            if v < 0.5:
+                temp += 1
+        if temp == len(output):
+            final_output = "None"
+        else:
+            final_output = max(output, key= lambda x: output[x])
     return render_template('result_image_classify.html',label = final_output, imagesource=file_path)
 
 
