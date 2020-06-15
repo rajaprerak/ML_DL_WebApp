@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block body %}
+<style>
+    div {
+      background-image: url('static/img/portfolio-3.jpg');
+    }
+    </style>
+
+<link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' >
+
+<a href="/summarizer"><button class="btn btn-small waves-effect waves-light light-blue lighten-1">Back</button></a>
+<div class="container">
+<center><h2 style="color:#0a2e42;">Text Summarizer Output</h2></center>      
+</div>
+ 
+ 
+ <!-- Result Display-->
+ <section class="section section-solutions-about white">
+    <div class="container white-text">
+    
+         <!--   Icon Section   -->
+         <div class="row">
+           <div class="col s12 m6">
+             <div class="icon-block">
+               <h5 class="center" style="color: black;">Your Text</h5>
+                <p style="color: black;text-align: center;">Reading Time: <span style="color:black;">{{ final_reading_time }} min </span></p>
+               <p class="light" style="color: black;">{{ctext}}</p>
+   
+             </div>
+           </div>
+   
+           <div class="col s12 m6 light-blue">
+             <div class="icon-block">
+               <h5 class="center" style="color: black;">Summary</h5>
+                 <div class="" role="alert">
+                 <p style="color: black;text-align: center;">Reading Time: <span style="color:black;">{{ summary_reading_time }} min </span></p>
+           </div>
+               <p class="light" style="color: black;">{{ final_summary }}</p>
+             
+             </div>
+           </div>
+   
+         </div>
+   
+     
+     </div>
+   </section>
+
+{% endblock %}

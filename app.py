@@ -7,6 +7,12 @@ from keras.preprocessing.image import ImageDataGenerator, load_img, img_to_array
 import numpy as np
 import logging
 import sys
+from summarizer import nltk_summarizer
+import time
+import spacy
+from bs4 import BeautifulSoup
+from urllib.request import urlopen
+nlp = spacy.load('en')
 
 app = Flask(__name__)
 app.logger.addHandler(logging.StreamHandler(sys.stdout))
@@ -72,6 +78,47 @@ def result_image_classify():
             final_output = max(output, key= lambda x: output[x])
     return render_template('result_image_classify.html',label = final_output, imagesource=file_path)
 
+@app.route('/analyze',methods=['GET','POST'])
+def analyze():
+	start = time.time()
+	if request.method == 'POST':
+		rawtext = request.form['rawtext']
+		final_reading_time = readingTime(rawtext)
+		final_summary = nltk_summarizer(rawtext)
+		summary_reading_time = readingTime(final_summary)
+		end = time.time()
+		final_time = end-start
+	return render_template('summarizer_output.html',ctext=rawtext,final_summary=final_summary,final_time=final_time,final_reading_time=final_reading_time,summary_reading_time=summary_reading_time)
+
+@app.route('/analyze_url',methods=['GET','POST'])
+def analyze_url():
+	start = time.time()
+	if request.method == 'POST':
+		raw_url = request.form['raw_url']
+		rawtext = get_text(raw_url)
+		final_reading_time = readingTime(rawtext)
+		final_summary = nltk_summarizer(rawtext)
+		summary_reading_time = readingTime(final_summary)
+		end = time.time()
+		final_time = end-start
+	return render_template('summarizer_output.html',ctext=rawtext,final_summary=final_summary,final_time=final_time,final_reading_time=final_reading_time,summary_reading_time=summary_reading_time)
+
+# Reading Time
+def readingTime(mytext):
+	total_words = len([ token.text for token in nlp(mytext)])
+	estimatedTime = total_words/200.0
+	return estimatedTime
+
+# Fetch Text From Url
+def get_text(url):
+	page = urlopen(url)
+	soup = BeautifulSoup(page)
+	fetched_text = ' '.join(map(lambda p:p.text,soup.find_all('p')))
+	return fetched_text
+
+@app.route('/summarizer')
+def summarizer():
+    return render_template('summarizer.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

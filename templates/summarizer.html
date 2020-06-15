@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block body %}
+<style>
+    div {
+      background-image: url('static/img/portfolio-3.jpg');
+    }
+    </style>
+
+<link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' >
+
+<a href="/"><button class="btn btn-small waves-effect waves-light light-blue lighten-1">Home</button></a>
+<div class="container">
+<center><h2 style="color:#0a2e42;">Text Summarizer</h2></center>      
+</div>
+
+<!-- Start of Main Section -->
+ <div class="container">
+    <div class="section">
+       
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="input-field col s12 m10">
+          <div class="icon-block">
+            <h4>Enter your text here</h4>
+           <form method="POST" action="/analyze">
+         <textarea name="rawtext" cols="5" rows="5" class="form-control" required="true" placeholder="Enter Text"></textarea>
+          
+         <br/>
+         <button class="btn btn-small waves-effect waves-light light-blue lighten-1" type="reset">Clear</button>
+          <button class="btn btn-small waves-effect waves-light purple lighten-1" type="submit">Summarize</button>
+          
+        </form>
+          </div>
+        </div>
+
+      </div>
+        <h3>Or</h3>
+        <div class="row">
+        <div class="input-field col s12 m10">
+          <div class="icon-block">
+            <h4>Enter URL here</h4>
+           <form method="POST" action="/analyze_url">
+         <input type="text" name="raw_url" placeholder="Enter URL" required="true">
+         <button class="btn btn-small waves-effect waves-light light-blue lighten-1" type="reset">Clear</button>
+          <button class="btn btn-small waves-effect waves-light purple lighten-1" type="submit">Summarize</button>
+          
+        </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <!-- End -->
+
+
+{% endblock %}
+
+
