@@ -16,6 +16,7 @@ import nltk
 
 nlp = spacy.load('en_core_web_sm')
 nltk.download('stopwords')
+nltk.download('punkt')
 app = Flask(__name__)
 app.logger.addHandler(logging.StreamHandler(sys.stdout))
 app.logger.setLevel(logging.ERROR)
