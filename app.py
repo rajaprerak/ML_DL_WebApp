@@ -12,8 +12,10 @@ import time
 import spacy
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-nlp = spacy.load('en_core_web_sm')
+import nltk
 
+nlp = spacy.load('en_core_web_sm')
+nltk.download('stopwords')
 app = Flask(__name__)
 app.logger.addHandler(logging.StreamHandler(sys.stdout))
 app.logger.setLevel(logging.ERROR)
