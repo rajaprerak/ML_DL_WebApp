@@ -10,7 +10,7 @@ tensorboard==2.0.1
 tensorflow-estimator==2.0.1
 Werkzeug==0.16.0
 itsdangerous==1.1.0
-Jinja2==2.10.3
+Jinja2==2.11.3
 Flask==0.11.1
 gunicorn==19.9.0
 Flask-Bcrypt==0.5.2
